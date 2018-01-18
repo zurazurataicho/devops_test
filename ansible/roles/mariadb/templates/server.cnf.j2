@@ -1,0 +1,30 @@
+# origin: /usr/share/mysql/my-large.cnf
+
+[mysqld]
+port = {{ mariadb_port }}
+socket = /var/lib/mysql/mysql.sock
+skip-external-locking
+key_buffer_size = {{ mariadb_key_buffer_size }}
+max_allowed_packet = {{ mariadb_max_allowed_packet }}
+net_buffer_length = {{ mariadb_net_buffer_length }}
+query_cache_size = {{ mariadb_query_cache_size }}
+read_buffer_size = {{ mariadb_read_buffer_size }}
+read_rnd_buffer_size = {{ mariadb_read_rnd_buffer_size }}
+sort_buffer_size = {{ mariadb_sort_buffer_size }}
+table_open_cache = {{ mariadb_table_open_cache }}
+thread_cache_size = {{ mariadb_thread_cache_size }}
+thread_concurrency = {{ mariadb_thread_concurrency }}
+thread_stack = {{ mariadb_thread_stack }}
+log-bin = mysql-bin
+binlog_format = mixed
+server-id = 1
+
+[mysqldump]
+quick
+max_allowed_packet = 16M
+
+[mysql]
+no-auto-rehash
+
+[mysqlhotcopy]
+interactive-timeout

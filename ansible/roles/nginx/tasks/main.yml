@@ -1,0 +1,20 @@
+# file: roles/nginx/tasks/main.yml
+---
+
+- name: Nginxインストール
+  yum: name=nginx state=present
+  tags:
+    - nginx
+
+- name: Nginx設定ファイルコピー
+  template:
+    src=../templates/nginx.conf.j2
+    dest=/etc/nginx/nginx.conf
+    owner=root
+    group=root
+    mode=644
+  notify:
+    - Nginx再起動
+    - firewalld再起動
+  tags:
+    - nginx

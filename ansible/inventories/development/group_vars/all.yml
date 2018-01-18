@@ -1,0 +1,12 @@
+# file: group_vars/development/all.yml
+---
+
+environment: dev
+
+#ansible_host: 127.0.0.1
+ansible_user: vagrant
+ansible_become: true
+ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
+become: true
+become_method: sudo

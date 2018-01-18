@@ -1,0 +1,14 @@
+# file: group_vars/development/dbservers.yml
+---
+
+mariadb_key_buffer_size: 16M
+mariadb_max_allowed_packet: 1M
+mariadb_net_buffer_length: 2K
+mariadb_query_cache_size: 0
+mariadb_read_buffer_size: 256K
+mariadb_read_rnd_buffer_size: 256K
+mariadb_sort_buffer_size: 64K
+mariadb_table_open_cache: 4
+mariadb_thread_cache_size: 8
+mariadb_thread_concurrency: 10
+mariadb_thread_stack: 240K

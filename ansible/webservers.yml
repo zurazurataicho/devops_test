@@ -1,0 +1,12 @@
+# file: webservers.yml
+---
+
+- hosts: webservers
+  vars_files:
+    - common/vars/common.yml
+  roles:
+    - common
+    - selinux
+    - php
+    - nginx
+    - php-fpm
