@@ -1,7 +1,9 @@
 # file: webservers.yml
 ---
 
-- hosts: webservers
+- hosts:
+    - webservers
+    - local
   vars_files:
     - common/vars/common.yml
   roles:

@@ -1,7 +1,9 @@
 # file: dbservers.yml
 ---
 
-- hosts: dbservers
+- hosts:
+    - dbservers
+    - local
   vars_files:
     - common/vars/common.yml
   roles:
