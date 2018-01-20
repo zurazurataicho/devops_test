@@ -1,0 +1,8 @@
+# file: development
+
+[local]
+localvm
+
+# 環境を変数に設定
+[all:vars]
+environment=local

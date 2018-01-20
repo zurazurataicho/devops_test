@@ -1,0 +1,61 @@
+# file: development
+
+#
+# USのサーバとJPのサーバという設定
+# それぞれグループでくくる
+#
+
+# USのウェブサーバグループ
+[us-webservers]
+dev-web-us
+#dev-web-us2
+#dev-web-us3
+#    :
+
+# USのDBサーバグループ
+[us-dbservers]
+dev-db-us
+#dev-db-us2
+#dev-db-us3
+#    :
+
+# JPのウェブサーバグループ
+[jp-webservers]
+dev-web-jp
+#dev-web-jp2
+#dev-web-jp3
+#    :
+
+# JPのDBサーバグループ
+[jp-dbservers]
+dev-db-jp
+#dev-db-jp2
+#dev-db-jp3
+#    :
+
+
+# ウェブサーバグループ
+[webservers:children]
+us-webservers
+jp-webservers
+
+# DBサーバグループ
+[dbservers:children]
+us-dbservers
+jp-dbservers
+
+
+# USグループ
+[us:children]
+us-webservers
+us-dbservers
+
+# JPグループ
+[jp:children]
+jp-webservers
+jp-dbservers
+
+
+# 環境を変数に設定
+[all:vars]
+environment=development

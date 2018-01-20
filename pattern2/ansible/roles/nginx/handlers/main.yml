@@ -1,0 +1,13 @@
+# roles/nginx/handlers/main.yml
+---
+
+- name: Nginx再起動
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
+
+- name: firewalld再起動
+  service:
+    name: firewalld
+    state: restarted

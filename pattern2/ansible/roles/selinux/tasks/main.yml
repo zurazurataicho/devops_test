@@ -1,0 +1,17 @@
+# roles/selinux/tasks/main.yml
+---
+
+- name: SELinux監査ログ設定(permissive)
+  selinux:
+    policy: targeted
+    state: permissive
+  tags:
+    - selinux
+
+- name: ファイアウォール設定(http, ntp許可)
+  firewalld: service={{ item }} permanent=true state=enabled immediate=true
+  with_items:
+    - http
+    - ntp
+  tags:
+    - firewalld

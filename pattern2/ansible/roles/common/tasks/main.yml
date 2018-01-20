@@ -1,0 +1,20 @@
+# file: roles/common/tasks/main.yml
+---
+
+- name: NTPサーバ設定
+  yum: name=ntp state=present
+  tags:
+    - common
+    - ntp
+
+- name: NTP設定ファイル
+  copy: src=../files/ntp.conf dest=/etc/ntp.conf owner=root group=root mode=0644
+  tags:
+    - common
+    - ntp
+
+- name: NTP起動
+  service: name=ntpd state=started enabled=yes
+  tags:
+    - common
+    - ntp

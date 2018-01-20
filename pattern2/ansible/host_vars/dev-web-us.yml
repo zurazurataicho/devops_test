@@ -1,0 +1,5 @@
+# file: host_vars/dev-web-us.yml
+---
+
+#ansible_port: 2223
+#ansible_ssh_private_key_file: /Users/zura/Vagrant/devops_test/pattern2/.vagrant/machines/dev-web-us/virtualbox/private_key

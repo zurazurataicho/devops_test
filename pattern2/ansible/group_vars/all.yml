@@ -1,0 +1,9 @@
+# file: group_vars/all.yml
+---
+
+ansible_user: vagrant
+ansible_become: true
+ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
+become: true
+become_method: sudo

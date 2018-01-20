@@ -1,0 +1,17 @@
+# file: roles/php-fpm/tasks/main.yml
+---
+
+- name: PHP-FPM設定ファイルコピー
+  template:
+    src=../templates/www.conf.j2
+    dest=/etc/php-fpm.d/www.conf
+    owner=root
+    group=root
+    mode=644
+  tags:
+    - php-fpm
+
+- name: PHP-FPM起動
+  service: name=php-fpm state=started enabled=yes
+  tags:
+    - php-fpm

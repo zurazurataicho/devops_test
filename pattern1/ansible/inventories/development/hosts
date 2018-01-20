@@ -1,15 +1,15 @@
 # file: inventories/development/hosts
 
-[beretta-webservers]
+[my-webservers]
 dev-web1
 dev-web2
 
-[beretta-dbservers]
+[my-dbservers]
 dev-db1
 dev-db2
 
 [webservers:children]
-beretta-webservers
+my-webservers
 
 [dbservers:children]
-beretta-dbservers
+my-dbservers

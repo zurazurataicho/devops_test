@@ -1,0 +1,13 @@
+# roles/php-fpm/handlers/main.yml
+---
+
+- name: PHP-FPM再起動
+  service:
+    name: php-fpm
+    state: restarted
+    enabled: yes
+
+- name: firewalld再起動
+  service:
+    name: firewalld
+    state: restarted

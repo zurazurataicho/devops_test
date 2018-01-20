@@ -1,0 +1,13 @@
+# file: vars/local.yml
+---
+
+#
+# ansible/*.yml からimport_playbookで呼ばれる
+#
+
+ansible_user: vagrant
+ansible_become: true
+ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
+become: true
+become_method: sudo

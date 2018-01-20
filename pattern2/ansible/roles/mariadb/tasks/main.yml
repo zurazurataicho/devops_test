@@ -1,0 +1,25 @@
+# roles/mariadb/tasks/main.yml
+---
+
+- name: MariaDBサーバ設定
+  yum: name=mariadb-server state=present
+  tags:
+    - mariadb
+
+- name: MariaDBクライアント設定
+  yum: name=mariadb state=present
+  tags:
+    - mariadb
+
+- name: MariaDB設定ファイルコピー
+  template:
+    src=../templates/server.cnf.j2
+    dest=/etc/my.cnf
+    owner=root
+    group=root
+    mode=644
+  notify:
+    - MariaDB再起動
+    - firewalld再起動
+  tags:
+    - mariadb

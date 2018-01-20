@@ -1,0 +1,43 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+#
+# vagrantでVMを複数起動させてansibleで設定。
+#
+
+VAGRANTFILE_API_VERSION = "2"
+VAGRANT_VM_PROVIDER = "virtualbox"
+
+VM_BOX_NAME = "generic/centos7"
+VM_CPUS = "1"
+VM_MEMORY = "512"
+
+machineNames = [
+  "localvm",
+  "dev-web-us", "dev-db-us", "dev-web-jp", "dev-db-jp",
+  #"stg-web-us", "stg-db-us", "stg-web-jp", "stg-db-jp"
+]
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = VM_BOX_NAME
+  #config.vm.box_check_update = false
+
+  machineCount = machineNames.size - 1
+  (0..machineCount).each do |index|
+    # マシン設定
+    config.vm.define machineNames[index] do |machine|
+      machine.vm.hostname = machineNames[index]
+      machine.vm.network "forwarded_port", id: "ssh", guest: 22, host: 2222 + index
+      machine.vm.network "forwarded_port", id: "http", guest: 80, host: 8080 + index
+      #machine.vm.network "forwarded_port", id: "https", guest: 443, host: 4430 + index
+      machine.vm.network "private_network", ip: "192.168.33.#{10 + index}"
+      machine.vm.synced_folder "server_contents", "/var/www/html", mount_options: ["dmode=775", "fmode=664"], :owner => "root", :group => "root"
+      machine.vm.provider VAGRANT_VM_PROVIDER do |vb|
+        vb.gui = false
+        vb.name = machineNames[index]
+        vb.cpus = VM_CPUS
+        vb.memory = VM_MEMORY
+      end
+    end
+  end
+end

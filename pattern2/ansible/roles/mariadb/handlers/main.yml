@@ -1,0 +1,13 @@
+# roles/mariadb/handlers/main.yml
+---
+
+- name: MariaDB再起動
+  service:
+    name: mariadb
+    state: restarted
+    enabled: yes
+
+- name: firewalld再起動
+  service:
+    name: firewalld
+    state: restarted

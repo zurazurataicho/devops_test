@@ -1,0 +1,5 @@
+# file: host_vars/dev-db-jp.yml
+---
+
+#ansible_port: 2226
+#ansible_ssh_private_key_file: /Users/zura/Vagrant/devops_test/pattern2/.vagrant/machines/dev-db-jp/virtualbox/private_key

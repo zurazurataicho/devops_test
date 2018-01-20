@@ -1,0 +1,13 @@
+# file: dbservers.yml
+---
+
+- hosts:
+    - dbservers
+    - local
+  vars_files:
+    - common/vars/common.yml
+    - vars/{{ environment }}/dbservers.yml
+  roles:
+    - common
+    - selinux
+    - mariadb
